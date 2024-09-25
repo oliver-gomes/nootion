@@ -13,7 +13,7 @@ import { useTheme } from "next-themes";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-export const BlockNoteEditor = ({ userDocumentData }: DocumentProps) => {
+export const BlockNoteEditor = ({ userDocumentData }: any) => {
   const { resolvedTheme } = useTheme();
   const params = useParams();
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -21,7 +21,7 @@ export const BlockNoteEditor = ({ userDocumentData }: DocumentProps) => {
   useEffect(() => {
     const updateBlocks = async () => {
       await axios.put(`/api/document`, {
-        title: blocks[0]?.content[0]?.text,
+        title: (blocks[0]?.content as any[])?.[0]?.text ?? "Untitled",
         document: blocks,
         documentId: params.documentId,
       });

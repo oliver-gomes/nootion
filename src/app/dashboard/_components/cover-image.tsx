@@ -16,9 +16,9 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useParams } from "next/navigation";
 
-export const CoverImage = ({ children, setUpdatedCover }) => {
+export const CoverImage = ({ children, setUpdatedCover }: any) => {
   const { documentId } = useParams();
-  const [selectedCover, setSelectedCover] = useState();
+  const [selectedCover, setSelectedCover] = useState<string>("");
 
   const handleUpdateCover = async () => {
     setUpdatedCover(selectedCover);
